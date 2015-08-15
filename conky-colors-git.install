@@ -1,0 +1,23 @@
+post_install() {
+	echo "Updating font cache..."
+	fc-cache -f
+	
+	echo "Making hddtemp user executable"
+	chmod u+s /usr/sbin/hddtemp
+	
+	echo "Detecting sensors"
+	sensors-detect
+}
+
+post_upgrade() {
+	echo "Updating fonts cache..."
+	fc-cache -f
+}
+
+post_remove() {
+	echo "Updating fonts cache..."
+	fc-cache -f
+	
+	echo "Making hddtemp not user executable"
+	chmod u-s /usr/sbin/hddtemp
+}
